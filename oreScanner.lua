@@ -109,6 +109,7 @@ end
 local function checkTerminate()
     local event, p1, p2, p3 = os.pullEventRaw()
     if event == 'terminate' then
+        print("terminated?")
         canvas.clear()
     end
 end
