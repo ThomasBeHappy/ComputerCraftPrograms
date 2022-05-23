@@ -108,7 +108,7 @@ end
 
 local function checkTerminate()
     while true do
-        local event, p1, p2, p3 = os.pullEvent()
+        local event, p1, p2, p3 = os.pullEventRaw()
         if event == 'terminate' then
             print("terminated?")
             canvas.clear()
@@ -119,5 +119,5 @@ end
 
 
 
-parallel.waitForAny(render, scan, checkTerminate)
+parallel.waitForAny(checkTerminate, render, scan)
 
