@@ -107,11 +107,14 @@ local function render()
 end
 
 local function checkTerminate()
-    local event, p1, p2, p3 = os.pullEventRaw()
-    if event == 'terminate' then
-        print("terminated?")
-        canvas.clear()
+    while true do
+        local event, p1, p2, p3 = os.pullEvent()
+        if event == 'terminate' then
+            print("terminated?")
+            canvas.clear()
+        end
     end
+
 end
 
 
