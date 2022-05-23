@@ -106,10 +106,14 @@ local function render()
 	end
 end
 
-local event, p1, p2, p3 = os.pullEventRaw()
-if event == 'terminate' then
-    canvas.clear()
+local function checkTerminate()
+    local event, p1, p2, p3 = os.pullEventRaw()
+    if event == 'terminate' then
+        canvas.clear()
+    end
 end
 
-parallel.waitForAll(render, scan)
+
+
+parallel.waitForAny(render, scan, checkTerminate)
 
