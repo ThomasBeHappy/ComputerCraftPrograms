@@ -31,6 +31,9 @@ function updateMonitor()
             write("ID: " .. value.id)
             write("Name: " .. value.name)
         end
+
+        sleep(1)
+
     end
 end
 
