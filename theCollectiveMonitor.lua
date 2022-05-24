@@ -32,12 +32,13 @@ function updateMonitor()
     while true do
         monitor.clear()
         write("-- Collective Monitor -- ", 1, 1)
-
+        local index = 0
         for key,value in pairs(collective) do --actualcode
-            write("Name: " .. key)
-            write("Health: " .. math.floor(collective[key].player.health))
-            write("Health: " .. math.floor(collective[key].player.hunger.hunger))
-            write("Saturation: " .. math.floor(collective[key].player.hunger.saturation))
+            write("Name: " .. key, 1, 1 + index)
+            write("Health: " .. math.floor(collective[key].player.health), 1, 2 + index)
+            write("Health: " .. math.floor(collective[key].player.hunger.hunger), 1, 3 + index)
+            write("Saturation: " .. math.floor(collective[key].player.hunger.saturation), 1, 4 + index)
+            index = index + 5
         end
 
         sleep(1)
