@@ -31,9 +31,12 @@ end
 function updateMonitor()
     while true do
         monitor.clear()
-        write("-- Collective Monitor -- ")
-        for index, value in ipairs(collective) do
-            write("Name: " .. collective[index].name, 1, 2)
+        write("-- Collective Monitor -- ", 1, 1)
+        print(collective["Gaming_Frame"])
+
+        for key,value in pairs(collective) do --actualcode
+            write("Name: " .. key)
+            write("ID: " .. collective[key].id)
         end
 
         sleep(1)
