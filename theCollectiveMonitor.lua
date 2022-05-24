@@ -1,4 +1,4 @@
-local monitor = peripheral.wrap("right")
+local monitor = peripheral.wrap("left")
 
 rednet.open("top")
 
