@@ -11,6 +11,6 @@ peripheral.find("modem", rednet.open)
 while true do
     local data = {name = modules.getName(), inventory = modules.getInventory(), equipment = modules.getEquipment(), player = modules.getMetaOwner() }
 
-    rednet.send(3, data)
+    rednet.send(4, data)
     sleep(1)
 end
