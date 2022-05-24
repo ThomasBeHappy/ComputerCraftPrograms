@@ -1,3 +1,5 @@
+local modules = peripheral.find("neuralInterface")
+
 peripheral.find("modem", rednet.open)
 
 if not modules.hasModule("plethora:introspection") then error("Must have an introspection module", 0) end
