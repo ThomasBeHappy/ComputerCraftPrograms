@@ -2,6 +2,9 @@ local monitor = peripheral.wrap("right")
 
 rednet.open("top")
 
+monitor.clear()
+monitor.setCursorPos(1,1)
+
 local collective = {}
 
 local function write(input, x, y)
@@ -27,9 +30,10 @@ end
 
 function updateMonitor()
     while true do
+        monitor.clear()
+        write("-- Collective Monitor --")
         for index, value in ipairs(collective) do
-            write("ID: " .. value.id, 1, 1)
-            write("Name: " .. value.name, 1, 2)
+            write("Name: " .. collective[index].name, 1, 2)
         end
 
         sleep(1)
