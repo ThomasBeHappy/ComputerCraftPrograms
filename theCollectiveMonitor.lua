@@ -34,10 +34,10 @@ function updateMonitor()
         write("-- Collective Monitor -- ", 1, 1)
         local index = 0
         for key,value in pairs(collective) do --actualcode
-            write("Name: " .. key, 1, 1 + index)
-            write("Health: " .. math.floor(collective[key].player.health), 1, 2 + index)
-            write("Health: " .. math.floor(collective[key].player.hunger.hunger), 1, 3 + index)
-            write("Saturation: " .. math.floor(collective[key].player.hunger.saturation), 1, 4 + index)
+            write("Name: " .. key, 1, 2 + index)
+            write("Health: " .. math.floor(collective[key].player.health), 1, 3 + index)
+            write("Hunger: " .. math.floor(collective[key].player.food.hunger), 1, 4 + index)
+            write("Saturation: " .. math.floor(collective[key].player.food.saturation), 1, 5 + index)
             index = index + 5
         end
 
