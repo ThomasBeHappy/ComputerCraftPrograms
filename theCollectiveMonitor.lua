@@ -21,15 +21,15 @@ function receiveUpdates()
     while true do
         local id, message = rednet.receive()
 
-        collective[message.id] = message
+        collective[message.name] = message
     end
 end
 
 function updateMonitor()
     while true do
         for index, value in ipairs(collective) do
-            write("ID: " .. value.id)
-            write("Name: " .. value.name)
+            write("ID: " .. value.id, 1, 1)
+            write("Name: " .. value.name, 1, 2)
         end
 
         sleep(1)
