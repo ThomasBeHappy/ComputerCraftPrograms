@@ -10,7 +10,7 @@ if not modules.hasModule("plethora:kinetic", 0) then error("Must have a kinetic 
 
 local meta = {}
 local hover = false
-parallel.waitForAny(	function()
+parallel.waitForAny(function()
     while true do
         local event, key = os.pullEvent()
         if event == "key" and key == keys.o then
