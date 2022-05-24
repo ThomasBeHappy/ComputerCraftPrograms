@@ -36,7 +36,7 @@ function updateMonitor()
 
         for key,value in pairs(collective) do --actualcode
             write("Name: " .. key)
-            write("ID: " .. collective[key].id)
+            write("ID: " .. value.id)
         end
 
         sleep(1)
