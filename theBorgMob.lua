@@ -3,23 +3,24 @@ local interface = peripheral.wrap("back")
 interface.disableAI()
 peripheral.find("modem", rednet.open)
 
-local position = vector.new(0,0,0)
+local position = {}
 
 
 function receiveLocation()
     while true do
         local id, message = rednet.receive()
-        
 
-        if id == 0 then
-            position = vector.new(message.x, message.y, message.z)
-        end
+        print(message.x)
+
+        position.x = message.x
+        position.y = message.y
+        position.z = message.z
     end
 end
 
 function follow()
     while true do
-        if not position == vector.new(0,0,0) then
+        if not position == {} then
             interface.walk(position.x, position.y, position.z)
         end
 
