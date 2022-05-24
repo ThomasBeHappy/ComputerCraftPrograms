@@ -31,7 +31,7 @@ end
 function updateMonitor()
     while true do
         monitor.clear()
-        write("-- Collective Monitor --")
+        write("-- Collective Monitor -- ")
         for index, value in ipairs(collective) do
             write("Name: " .. collective[index].name, 1, 2)
         end
