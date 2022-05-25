@@ -15,7 +15,7 @@ local function fire(entity)
 	sleep(0.2)
 end
 
-local mobNames = { "Creeper", "Zombie", "Skeleton" }
+local mobNames = { "Creeper", "Zombie", "Skeleton", "Spider" }
 local mobLookup = {}
 for i = 1, #mobNames do
 	mobLookup[mobNames[i]] = true
