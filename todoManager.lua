@@ -1,8 +1,8 @@
 local monitor = peripheral.wrap("right")
 
-local backgroundColor = "00FFFF"
-local todoColor = "FF0000"
-local doneColor = "00FF00"
+local backgroundColor = colors.cyan
+local todoColor = colors.red
+local doneColor = colors.green
 
 local function write(input, x, y, color)
     local curX, curY = monitor.getCursorPos()
@@ -10,7 +10,8 @@ local function write(input, x, y, color)
     curY = y or curY 
     
     monitor.setCursorPos(curX, curY)
-    monitor.blit(input, color, backgroundColor)
+    monitor.setTextColour(color)
+    monitor.write(input)
 end
 
 
@@ -35,7 +36,7 @@ local function updateMonitor()
             index = index + 1
         end
 
-        sleep(1)
+        sleep()
     end
 end
 
