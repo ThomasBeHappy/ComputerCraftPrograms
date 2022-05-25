@@ -48,13 +48,13 @@ local function updateMonitor()
             write("------------------------------------------------------------------------", 1, 3 + index, colors.black)
             index = index + 2
 
-            t:add("Mark", function () todo[key].todo = ~todo[key].todo end, l, 2 + index, l + 6, 2 + index, colors.lime)
+            t:add("Mark", function () todo[key].todo = not todo[key].todo end, l, 2 + index, l + 6, 2 + index, colors.lime)
             
         end
 
         t:draw()
 
-        sleep()
+        sleep(1)
     end
 end
 
@@ -74,12 +74,13 @@ local function newItem()
     end
 end
 
+function run()
+    t:run()
+end
+
 monitor.clear()
 monitor.setCursorPos(1,1)
 monitor.setBackgroundColour(backgroundColor)
 monitor.setTextScale(0.5)
-button.setMonitor(monitor)
 
-t:run()
-
-parallel.waitForAll(updateMonitor, newItem)
+parallel.waitForAll(updateMonitor, newItem, run)
