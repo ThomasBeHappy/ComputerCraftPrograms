@@ -1,4 +1,4 @@
-local monitor = peripheral.wrap("left")
+local monitor = peripheral.wrap("right")
 
 local backgroundColor = colors.cyan
 local todoColor = colors.red
