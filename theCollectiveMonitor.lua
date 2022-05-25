@@ -4,7 +4,7 @@ rednet.open("top")
 
 monitor.clear()
 monitor.setCursorPos(1,1)
-monitor.setTextScale(1)
+monitor.setTextScale(0.5)
 
 local collective = {}
 
