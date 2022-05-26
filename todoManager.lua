@@ -32,9 +32,8 @@ local function updateMonitor()
     while true do
         local index = 0
 
-        for k in pairs (t.buttonList) do
-            t[k] = nil
-        end
+        -- VERY DIRTY FIX AND SOMETHING I SHOULD NOT KEEP
+        t = touchpoint.new("right")
 
         for key,value in pairs(todo) do
 
