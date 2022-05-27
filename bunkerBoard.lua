@@ -74,6 +74,7 @@ end
 mon.setCursorPos(1, 1)
 mon.setBackgroundColour(colors.yellow)
 mon.setTextColour(colors.black)
+mon.setTextScale(1.5)
 mon.clear()
 
 lineBreak()
