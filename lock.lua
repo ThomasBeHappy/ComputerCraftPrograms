@@ -109,22 +109,24 @@ drawpad()
 function keypadSide()
     while true do
         event, side, xPos, yPos = os.pullEvent("monitor_touch")
-        if tblpad[xPos][yPos] ~= "x" then
-            mon.setCursorPos(xPos, yPos)
-            mon.setBackgroundColor(colors.red)
-            mon.write(tblpad[xPos][yPos])
-            sleep(0.2)
-            mon.setCursorPos(xPos, yPos)
-            mon.setBackgroundColor(colors.green)
-            mon.write(tblpad[xPos][yPos])
-            press = press .. tblpad[xPos][yPos]
-            if string.len(press) == passlen and press == pass then
-                press = ""
-                opendoor()
-            elseif string.len(press) == passlen and press ~= pass then
-                press = ""
-                wrongpass()
-            end
+        if side == "front" then
+            if tblpad[xPos][yPos] ~= "x" then
+                mon.setCursorPos(xPos, yPos)
+                mon.setBackgroundColor(colors.red)
+                mon.write(tblpad[xPos][yPos])
+                sleep(0.2)
+                mon.setCursorPos(xPos, yPos)
+                mon.setBackgroundColor(colors.green)
+                mon.write(tblpad[xPos][yPos])
+                press = press .. tblpad[xPos][yPos]
+                if string.len(press) == passlen and press == pass then
+                    press = ""
+                    opendoor()
+                elseif string.len(press) == passlen and press ~= pass then
+                    press = ""
+                    wrongpass()
+                end
+            end       
         end
     end
 end
@@ -132,7 +134,7 @@ end
 
 function adminSide()
     myButton = button.create("Open Door")
-    width, height = mon.getSize()
+    width, height = adminMon.getSize()
     myButton.setPos(width / 2 - 4, height / 2)
     myButton.onClick(opendoor)
     while true do
@@ -140,4 +142,4 @@ function adminSide()
     end
 end
 
-parallel.waitForAll(keypadSide, admin)
+parallel.waitForAll(keypadSide, adminSide)
