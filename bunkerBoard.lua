@@ -70,9 +70,12 @@ while true do
   end
 end
 end
-mon.clear()
+
 mon.setCursorPos(1, 1)
-mon.setBackgroundColour(0x8B8000)
+mon.setBackgroundColour(colors.yellow)
+mon.setTextColour(colors.black)
+mon.clear()
+
 lineBreak()
 printStringCentre("|Frame Industries|")
 lineBreak()
