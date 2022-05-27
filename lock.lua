@@ -3,6 +3,8 @@ os.loadAPI("button.lua")
 -- Set monitor loc
 local mon = peripheral.wrap("front")
 local adminMon = peripheral.wrap("back")
+adminMon.clear()
+adminMon.setTextScale(0.5)
 button.setMonitor(adminMon)
 -- Set password
 local pass = "1234"
