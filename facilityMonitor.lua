@@ -104,10 +104,11 @@ local function initialize()
     pain.clear()
     
     pain.setColor(colors.white)
+    pain.setLine(1, 1, 100, 1)
     -- Elevator hallway
-    pain.setLine(60, 50, 64, 50, colors.white)
-    pain.setLine(60, 50, 60, 28, colors.white)
-    pain.setLine(64, 50, 64, 28, colors.white)
+    pain.setLine(60, 50, 64, 50)
+    pain.setLine(60, 50, 60, 28)
+    pain.setLine(64, 50, 64, 28)
     -- Hallway right
     pain.setLine(64, 28, 80, 28)
     pain.setLine(80, 33, 80, 28)
