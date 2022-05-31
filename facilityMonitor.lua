@@ -2,10 +2,10 @@ local monitor = peripheral.wrap("right")
 
 if monitor == nil then error("Requires a monitor attached") end
 
-monitor.clear()
+local api = require("pixelbox")
+local box = api.new(term)
 
-term.redirect(monitor)
-term.clear()
+box:clear(colors.lightGray)
 
 rednet.open("top")
 
@@ -72,7 +72,7 @@ local function initDoors()
     doorStates[15].endPos = { x = 1, z = 1}
 
     for key, door in pairs(doorStates) do
-        paintutils.drawLine(door.startPos.x, door.startPos.z, door.endPos.x, door.endPos.z, colors.red)
+        box:set_line(door.startPos.x, door.startPos.z, door.endPos.x, door.endPos.z, colors.red, 1)
     end
 end
 
@@ -80,23 +80,23 @@ local function initialize()
     
     -- 100 width, 52 height
     
-    paintutils.drawLine(1, 1, 100, 1, colors.white)
+    box:set_line(1, 1, 100, 1, colors.white, 1)
     -- Elevator hallway
-    paintutils.drawLine(60, 50, 64, 50, colors.white)
-    paintutils.drawLine(60, 50, 60, 28, colors.white)
-    paintutils.drawLine(64, 50, 64, 28, colors.white)
+    box:set_line(60, 50, 64, 50, colors.white, 1)
+    box:set_line(60, 50, 60, 28, colors.white, 1)
+    box:set_line(64, 50, 64, 28, colors.white, 1)
     -- Hallway right
-    paintutils.drawLine(64, 28, 80, 28, colors.white)
-    paintutils.drawLine(80, 33, 80, 28, colors.white)
-    paintutils.drawLine(80, 33, 35, 28, colors.white)
+    box:set_line(64, 28, 80, 28, colors.white, 1)
+    box:set_line(80, 33, 80, 28, colors.white, 1)
+    box:set_line(80, 33, 35, 28, colors.white, 1)
     -- Hallway left
-    paintutils.drawLine(60, 28, 10, 28, colors.white)
-    paintutils.drawLine(10, 33, 10, 28, colors.white)
-    paintutils.drawLine(10, 33, 31, 33, colors.white)
+    box:set_line(60, 28, 10, 28, colors.white, 1)
+    box:set_line(10, 33, 10, 28, colors.white, 1)
+    box:set_line(10, 33, 31, 33, colors.white, 1)
     -- Hallway top
-    paintutils.drawLine(31, 99, 31, 33, colors.white)
-    paintutils.drawLine(31, 99, 35, 99, colors.white)
-    paintutils.drawLine(35, 33, 35, 99, colors.white)
+    box:set_line(31, 99, 31, 33, colors.white, 1)
+    box:set_line(31, 99, 35, 99, colors.white, 1)
+    box:set_line(35, 33, 35, 99, colors.white, 1)
 
     initDoors()
 end
