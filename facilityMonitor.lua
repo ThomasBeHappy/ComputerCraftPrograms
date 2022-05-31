@@ -5,6 +5,7 @@ if monitor == nil then error("Requires a monitor attached") end
 monitor.clear()
 
 term.redirect(monitor)
+term.clear()
 
 rednet.open("top")
 
@@ -28,47 +29,47 @@ local function initDoors()
     doorStates[1].startPos = {x = 60, z = 47}
     doorStates[1].endPos = { x = 60, z = 49}
 
-    doorStates[1].startPos = {x = 64, z = 47}
-    doorStates[1].endPos = { x = 64, z = 49}
+    doorStates[2].startPos = {x = 64, z = 47}
+    doorStates[2].endPos = { x = 64, z = 49}
 
-    doorStates[1].startPos = {x = 1, z = 1}
-    doorStates[1].endPos = { x = 1, z = 1}
+    doorStates[3].startPos = {x = 1, z = 1}
+    doorStates[3].endPos = { x = 1, z = 1}
 
-    doorStates[1].startPos = {x = 1, z = 1}
-    doorStates[1].endPos = { x = 1, z = 1}
+    doorStates[4].startPos = {x = 1, z = 1}
+    doorStates[4].endPos = { x = 1, z = 1}
 
-    doorStates[1].startPos = {x = 1, z = 1}
-    doorStates[1].endPos = { x = 1, z = 1}
+    doorStates[5].startPos = {x = 1, z = 1}
+    doorStates[5].endPos = { x = 1, z = 1}
 
-    doorStates[1].startPos = {x = 1, z = 1}
-    doorStates[1].endPos = { x = 1, z = 1}
+    doorStates[6].startPos = {x = 1, z = 1}
+    doorStates[6].endPos = { x = 1, z = 1}
 
-    doorStates[1].startPos = {x = 1, z = 1}
-    doorStates[1].endPos = { x = 1, z = 1}
+    doorStates[7].startPos = {x = 1, z = 1}
+    doorStates[7].endPos = { x = 1, z = 1}
 
-    doorStates[1].startPos = {x = 1, z = 1}
-    doorStates[1].endPos = { x = 1, z = 1}
+    doorStates[8].startPos = {x = 1, z = 1}
+    doorStates[8].endPos = { x = 1, z = 1}
 
-    doorStates[1].startPos = {x = 1, z = 1}
-    doorStates[1].endPos = { x = 1, z = 1}
+    doorStates[9].startPos = {x = 1, z = 1}
+    doorStates[9].endPos = { x = 1, z = 1}
 
-    doorStates[1].startPos = {x = 1, z = 1}
-    doorStates[1].endPos = { x = 1, z = 1}
+    doorStates[10].startPos = {x = 1, z = 1}
+    doorStates[10].endPos = { x = 1, z = 1}
 
-    doorStates[1].startPos = {x = 1, z = 1}
-    doorStates[1].endPos = { x = 1, z = 1}
+    doorStates[11].startPos = {x = 1, z = 1}
+    doorStates[11].endPos = { x = 1, z = 1}
 
-    doorStates[1].startPos = {x = 1, z = 1}
-    doorStates[1].endPos = { x = 1, z = 1}
+    doorStates[12].startPos = {x = 1, z = 1}
+    doorStates[12].endPos = { x = 1, z = 1}
 
-    doorStates[1].startPos = {x = 1, z = 1}
-    doorStates[1].endPos = { x = 1, z = 1}
+    doorStates[13].startPos = {x = 1, z = 1}
+    doorStates[13].endPos = { x = 1, z = 1}
 
-    doorStates[1].startPos = {x = 1, z = 1}
-    doorStates[1].endPos = { x = 1, z = 1}
+    doorStates[14].startPos = {x = 1, z = 1}
+    doorStates[14].endPos = { x = 1, z = 1}
 
-    doorStates[1].startPos = {x = 1, z = 1}
-    doorStates[1].endPos = { x = 1, z = 1}
+    doorStates[15].startPos = {x = 1, z = 1}
+    doorStates[15].endPos = { x = 1, z = 1}
 
     for key, door in pairs(doorStates) do
         paintutils.drawLine(door.startPos.x, door.startPos.z, door.endPos.x, door.endPos.z, colors.red)
