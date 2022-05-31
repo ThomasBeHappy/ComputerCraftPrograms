@@ -4,7 +4,7 @@ if monitor == nil then error("Requires a monitor attached") end
 
 monitor.clear()
 
-local pain = require("pixelterm").create(monitor)
+term.redirect(monitor)
 
 rednet.open("top")
 
@@ -70,57 +70,32 @@ local function initDoors()
     doorStates[1].startPos = {x = 1, z = 1}
     doorStates[1].endPos = { x = 1, z = 1}
 
-    pain.setColor(colors.red)
     for key, door in pairs(doorStates) do
-        pain.setLine(door.startPos.x, door.startPos.z, door.endPos.x, door.endPos.z)
+        paintutils.drawLine(door.startPos.x, door.startPos.z, door.endPos.x, door.endPos.z, colors.red)
     end
 end
 
 local function initialize()
-    -- obj.setColor(color)
-    -- Sets pixel color, errors if color is not set in colors.
-
-    -- obj.getColor()
-    -- Returns the currently selected color.
-
-    -- obj.clear()
-    -- Clears the screen with the selected color, this sets the specific text characters and is used inside of create().
-
-    -- obj.setPixel(x, y [, color])
-    -- Now here's the fun part, using this you can set individual pixels to different colors, if color is unspecified it defaults to obj.getColor()
-
-    -- obj.getPixel(x, y)
-    -- Returns the color of a pixel at the specified coordinates.
-
-    -- obj.getSize()
-    -- Returns the size of the pixel grid.
-
-    -- obj.setLine(x1, y1, x2, y2, color)
-    -- Draws a line of pixels from x1 and y1 to x2 and y2, also accepts colors.
     
     -- 100 width, 52 height
-
-    pain.setColor(colors.black)
-    pain.clear()
     
-    pain.setColor(colors.white)
-    pain.setLine(1, 1, 100, 1)
+    paintutils.drawLine(1, 1, 100, 1, colors.white)
     -- Elevator hallway
-    pain.setLine(60, 50, 64, 50)
-    pain.setLine(60, 50, 60, 28)
-    pain.setLine(64, 50, 64, 28)
+    paintutils.drawLine(60, 50, 64, 50, colors.white)
+    paintutils.drawLine(60, 50, 60, 28, colors.white)
+    paintutils.drawLine(64, 50, 64, 28, colors.white)
     -- Hallway right
-    pain.setLine(64, 28, 80, 28)
-    pain.setLine(80, 33, 80, 28)
-    pain.setLine(80, 33, 35, 28)
+    paintutils.drawLine(64, 28, 80, 28, colors.white)
+    paintutils.drawLine(80, 33, 80, 28, colors.white)
+    paintutils.drawLine(80, 33, 35, 28, colors.white)
     -- Hallway left
-    pain.setLine(60, 28, 10, 28)
-    pain.setLine(10, 33, 10, 28)
-    pain.setLine(10, 33, 31, 33)
+    paintutils.drawLine(60, 28, 10, 28, colors.white)
+    paintutils.drawLine(10, 33, 10, 28, colors.white)
+    paintutils.drawLine(10, 33, 31, 33, colors.white)
     -- Hallway top
-    pain.setLine(31, 99, 31, 33)
-    pain.setLine(31, 99, 35, 99)
-    pain.setLine(35, 33, 35, 99)
+    paintutils.drawLine(31, 99, 31, 33, colors.white)
+    paintutils.drawLine(31, 99, 35, 99, colors.white)
+    paintutils.drawLine(35, 33, 35, 99, colors.white)
 
     initDoors()
 end
