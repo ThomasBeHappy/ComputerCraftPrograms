@@ -3,7 +3,7 @@ local monitor = peripheral.wrap("right")
 if monitor == nil then error("Requires a monitor attached") end
 
 local api = require("pixelbox")
-local box = api.new(term)
+local box = api.new(monitor)
 
 box:clear(colors.lightGray)
 
