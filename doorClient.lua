@@ -4,4 +4,6 @@ while true do
     local data = {id = os.getComputerID(), front = rs.getInput("front"), back = rs.getInput("back")}
 
     rednet.send(9, data)
+    
+    sleep(1)
 end

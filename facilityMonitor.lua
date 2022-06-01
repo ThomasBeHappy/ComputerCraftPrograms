@@ -21,16 +21,22 @@ local doorCount = 15
 
 -- Wait for updates to the states and update monitor accordingly
 
+
+local function drawMap()
+    box:push_updates()
+    box:draw()
+end
+
 local function initDoors()
     for i = 1, doorCount, 1 do
         doorStates[i] = {startPos = {x = 1, z = 1}, endPos = {x = 1, z = 1}, state = false}
     end
 
-    doorStates[1].startPos = {x = 60, z = 47}
-    doorStates[1].endPos = { x = 60, z = 49}
+    doorStates[1].startPos = {x = 35, z = 12}
+    doorStates[1].endPos = { x = 35, z = 15}
 
-    doorStates[2].startPos = {x = 64, z = 47}
-    doorStates[2].endPos = { x = 64, z = 49}
+    doorStates[2].startPos = {x = 39, z = 12}
+    doorStates[2].endPos = { x = 39, z = 15}
 
     doorStates[3].startPos = {x = 1, z = 1}
     doorStates[3].endPos = { x = 1, z = 1}
@@ -80,23 +86,24 @@ local function initialize()
     
     -- 100 width, 52 height
     
-    box:set_line(1, 1, 100, 1, colors.white, 1)
     -- Elevator hallway
-    box:set_line(60, 50, 64, 50, colors.white, 1)
-    box:set_line(60, 50, 60, 28, colors.white, 1)
-    box:set_line(64, 50, 64, 28, colors.white, 1)
+    box:set_line(35, 10, 39, 10, colors.white, 1)
+    box:set_line(35, 10, 35, 28, colors.white, 1)
+    box:set_line(39, 10, 39, 28, colors.white, 1)
     -- Hallway right
-    box:set_line(64, 28, 80, 28, colors.white, 1)
+    box:set_line(39, 28, 80, 28, colors.white, 1)
     box:set_line(80, 33, 80, 28, colors.white, 1)
-    box:set_line(80, 33, 35, 28, colors.white, 1)
+    box:set_line(80, 33, 59, 33, colors.white, 1)
     -- Hallway left
-    box:set_line(60, 28, 10, 28, colors.white, 1)
+    box:set_line(35, 28, 10, 28, colors.white, 1)
     box:set_line(10, 33, 10, 28, colors.white, 1)
-    box:set_line(10, 33, 31, 33, colors.white, 1)
+    box:set_line(10, 33, 55, 33, colors.white, 1)
     -- Hallway top
-    box:set_line(31, 99, 31, 33, colors.white, 1)
-    box:set_line(31, 99, 35, 99, colors.white, 1)
-    box:set_line(35, 33, 35, 99, colors.white, 1)
+    box:set_line(55, 50, 55, 33, colors.white, 1)
+    box:set_line(55, 50, 59, 50, colors.white, 1)
+    box:set_line(59, 33, 59, 50, colors.white, 1)
+
+    drawMap()
 
     initDoors()
 end
@@ -111,9 +118,6 @@ local function ping()
 
 end
 
-local function drawMap()
-    
-end
 
 local function receiveUpdate()
     
