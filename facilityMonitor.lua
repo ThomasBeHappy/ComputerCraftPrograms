@@ -26,13 +26,21 @@ local doorCount = 15
 local authorized = {{id = 8, doors = {1,3} }, {id = 7, doors = {2,4}} }
 
 local function drawMap()
-    for key, door in pairs(doorStates) do
+    while true do
+        for key, door in pairs(doorStates) do
 
-        if door.state then
-            box:set_line(door.startPos.x, door.startPos.z, door.endPos.x, door.endPos.z, colors.red, 1)
-        else 
-            box:set_line(door.startPos.x, door.startPos.z, door.endPos.x, door.endPos.z, colors.green, 1)
+            if door.state then
+                box:set_line(door.startPos.x, door.startPos.z, door.endPos.x, door.endPos.z, colors.red, 1)
+            else 
+                box:set_line(door.startPos.x, door.startPos.z, door.endPos.x, door.endPos.z, colors.green, 1)
+            end
         end
+    
+        
+        box:push_updates()
+        box:draw()
+
+        sleep(1)
     end
 end
 
