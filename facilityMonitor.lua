@@ -133,9 +133,13 @@ local function receiveUpdate()
     while true do
         local id, message = rednet.receive()
 
-        if authorized[id] ~= nil then
-            for index, value in ipairs(authorized[id].doors) do
-                doorStates[index].state = message.doors[index]
+        for index, value in ipairs(authorized) do
+            if authorized[index].id == id then
+
+                for _index, value in ipairs(authorized[index].doors) do
+                    doorStates[_index].state = message.doors[_index]
+                end
+
             end
         end
     end
