@@ -22,6 +22,9 @@ local doorCount = 15
 -- Wait for updates to the states and update monitor accordingly
 
 
+-- list of computer ID's, with doors
+local authorized = {{id = 8, doors = {1,3} }, {id = 7, doors = {2,4}} }
+
 local function drawMap()
     box:push_updates()
     box:draw()
@@ -32,17 +35,17 @@ local function initDoors()
         doorStates[i] = {startPos = {x = 1, z = 1}, endPos = {x = 1, z = 1}, state = false}
     end
 
-    doorStates[1].startPos = {x = 35, z = 12}
-    doorStates[1].endPos = { x = 35, z = 15}
+    doorStates[1].startPos = {x = 35, z = 15}
+    doorStates[1].endPos = { x = 35, z = 13}
 
-    doorStates[2].startPos = {x = 39, z = 12}
-    doorStates[2].endPos = { x = 39, z = 15}
+    doorStates[2].startPos = {x = 39, z = 15}
+    doorStates[2].endPos = { x = 39, z = 13}
 
-    doorStates[3].startPos = {x = 1, z = 1}
-    doorStates[3].endPos = { x = 1, z = 1}
+    doorStates[3].startPos = {x = 35, z = 19}
+    doorStates[3].endPos = { x = 35, z = 21}
 
-    doorStates[4].startPos = {x = 1, z = 1}
-    doorStates[4].endPos = { x = 1, z = 1}
+    doorStates[4].startPos = {x = 39, z = 19}
+    doorStates[4].endPos = { x = 39, z = 21}
 
     doorStates[5].startPos = {x = 1, z = 1}
     doorStates[5].endPos = { x = 1, z = 1}
@@ -108,25 +111,21 @@ local function initialize()
     initDoors()
 end
 
-local function ping()
-    rednet.broadcast("DOORSERVER_PING")
-
-    -- while true do
-    --     local id, message = rednet.receive()
-
-    -- end
-
-end
-
 
 local function receiveUpdate()
-    
+    rednet.broadcast("DOORSERVER_PING")
+
+    while true do
+        local id, message = rednet.receive()
+
+        if authorized[id] ~= nil then
+            for index, value in ipairs(authorized[id].doors) do
+                doorStates[index].state = message.doors[index]
+            end
+        end
+    end
 end
 
 initialize()
-
-ping()
-
-drawMap()
 
 parallel.waitForAll(receiveUpdate, drawMap)
