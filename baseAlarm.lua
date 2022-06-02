@@ -1,5 +1,8 @@
 local tape = peripheral.find("tape_drive")
 
+os.loadAPI("touchpoint")
+local t = touchpoint.new("top")
+
 if not tape then -- Check if there is a Tape Drive
     error("Tapedrive not found",0)
 end
@@ -36,11 +39,48 @@ local function play()
     tape.play()
 end
 
-play()
 
-while true do
-    if tape.getPosition() > 230000 then
-        play()
+local playing = false
+
+local function playing()
+    while true do
+        if playing == true then
+            if tape.getPosition() > 230000 then
+                play()
+            end
+        end
+        sleep(1)
     end
-    sleep(1)
 end
+
+
+local function button()
+    m = peripheral.wrap("top")
+    local w, h  = m.getSize()
+
+    t:add("ALARM", nil, 2, 2, w-1, h-1, colors.lime, colors.red)
+
+    t:draw()
+
+    while true do
+        --# handleEvents will convert monitor_touch events to button_click if it was on a button
+        local event, p1 = t:handleEvents(os.pullEvent())
+        if event == "button_click" then
+                t:toggleButton(p1)
+
+                if playing == true then
+                    t:rename(p1, "ALARM")
+                    play()
+                    playing = true
+                else 
+                    t:rename(p1, "STOP")
+                    playing = false
+                    tape.stop()
+                    tape.seek(-tape.getSize()) -- back to start again
+                end
+        end
+    end
+
+end
+
+parallel.waitForAll(button, playing)
