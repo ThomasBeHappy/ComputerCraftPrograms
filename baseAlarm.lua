@@ -1,6 +1,10 @@
 local tape = peripheral.find("tape_drive")
 
 os.loadAPI("touchpoint")
+
+local m = peripheral.wrap("top")
+m.setTextScale(0.7)
+
 local t = touchpoint.new("top")
 
 if not tape then -- Check if there is a Tape Drive
@@ -55,7 +59,6 @@ end
 
 
 local function button()
-    m = peripheral.wrap("top")
     local w, h  = m.getSize()
 
     t:add("ALARM", nil, 2, 2, w-1, h-1, colors.lime, colors.red)
