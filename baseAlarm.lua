@@ -36,7 +36,11 @@ local function play()
     tape.play()
 end
 
+play()
+
 while true do
-    play()
-    sleep(2)
+    if tape.getPosition() > 230000 then
+        play()
+    end
+    sleep(1)
 end
