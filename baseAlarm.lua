@@ -24,7 +24,7 @@ local function play()
     tape.stop()
     tape.seek(-tape.getSize()) -- go back to the start
 
-    local h = http.get("https://github.com/ThomasBeHappy/ComputerCraftPrograms/blob/main/siren.dfpwm", nil, true) -- write in binary mode
+    local h = http.get("https://github.com/ThomasBeHappy/ComputerCraftPrograms/blob/main/siren.dfpwm?raw=true", nil, true) -- write in binary mode
     tape.write(h.readAll()) -- that's it
     h.close()
 
