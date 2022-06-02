@@ -70,13 +70,13 @@ local function button()
 
                 if playing == true then
                     t:rename(p1, "ALARM")
-                    play()
-                    playing = true
-                else 
-                    t:rename(p1, "STOP")
                     playing = false
                     tape.stop()
                     tape.seek(-tape.getSize()) -- back to start again
+                else 
+                    t:rename(p1, "STOP")
+                    play()
+                    playing = true
                 end
         end
     end
