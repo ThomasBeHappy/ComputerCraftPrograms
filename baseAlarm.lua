@@ -38,4 +38,5 @@ end
 
 while true do
     play()
+    sleep(2)
 end
